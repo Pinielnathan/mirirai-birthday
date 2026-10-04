@@ -215,6 +215,8 @@ main,footer{position:relative;z-index:1}
 .orbit-ring{fill:none;stroke:var(--glass-line);stroke-width:1.2;stroke-dasharray:3 5}
 .otick{fill:var(--dim);transition:fill .4s,r .4s}
 .orbit-art.in .otick{fill:var(--gold)}
+.orbit-art.in .otick.ours{fill:var(--rose);filter:drop-shadow(0 0 5px var(--rose))}
+.lede .ours-key{color:var(--rose)}
 .earth{transform-origin:160px 160px;animation:orbit 16s linear infinite}
 @keyframes orbit{to{transform:rotate(-360deg)}}
 .earth-dot{fill:var(--sapphire-light)}
@@ -469,6 +471,7 @@ main,footer{position:relative;z-index:1}
       <p class="kicker">Since then</p>
       <h2 class="title">21 trips around the Sun</h2>
       <p class="lede">Every year the Earth carries you all the way around the Sun, about 940 million kilometres a lap. You've done it twenty-one times now, and you're still the brightest thing on the trip.</p>
+      <p class="lede">The last three marks are <span class="ours-key">rose</span>. Those are the laps we've made together, since 2024.</p>
       <dl class="stats">
         <div class="wide"><dt>Kilometres travelled around the Sun</dt><dd id="stat-km">19,700,000,000</dd></div>
         <div><dt>Days on Earth</dt><dd id="stat-days">7,677</dd></div>
@@ -539,7 +542,7 @@ main,footer{position:relative;z-index:1}
       <p class="letter-date" id="letter-date">4 October 2026</p>
       <p class="letter-hello">Mirirai,</p>
       <p>I know. This was supposed to reach you on the 28th. I could make excuses, but your name already says it better than I can: <em>mirirai</em>, wait. Thank you for waiting.</p>
-      <p>Twenty-one years ago, on a Wednesday under a waning crescent moon, the world got you. Since then you've travelled more than nineteen billion kilometres around the Sun, and somewhere along the way our paths crossed. I'm grateful for that every single day.</p>
+      <p>Twenty-one years ago, on a Wednesday under a waning crescent moon, the world got you. Since then you've travelled more than nineteen billion kilometres around the Sun, and in 2024 our paths crossed. Almost three years later, I'm still grateful for that every single day.</p>
       <p>You are kind in a way that makes people feel safe. You're beautiful in ways you don't even notice, and stronger than you give yourself credit for. I hope twenty-one is the year you finally see yourself the way I see you.</p>
       <p>Happy birthday, my love. Late on the calendar, never late in my heart.</p>
       <p class="letter-sign">Mongoro yako,<span class="signature">Nathan</span></p>
@@ -550,7 +553,7 @@ main,footer{position:relative;z-index:1}
 
 <footer class="foot wrap">
   <p class="foot-big">Late, but never forgotten.</p>
-  <p class="foot-date">28 · 09 · 2005</p>
+  <p class="foot-date">28 · 09 · 2005 &nbsp;·&nbsp; together since 2024</p>
   <button class="btn btn-ghost" id="replay" type="button">Rewind it again</button>
 </footer>
 
@@ -1065,7 +1068,7 @@ $('#replay').addEventListener('click', async e => {
   let s = '';
   for (let i = 0; i < 21; i++) {
     const a = i / 21 * Math.PI * 2 - Math.PI / 2;
-    s += `<circle class="otick" cx="${(160 + Math.cos(a) * 126).toFixed(1)}" cy="${(160 + Math.sin(a) * 126).toFixed(1)}" r="3" style="transition-delay:${(i * .07).toFixed(2)}s"/>`;
+    s += `<circle class="otick${i >= 18 ? ' ours' : ''}" cx="${(160 + Math.cos(a) * 126).toFixed(1)}" cy="${(160 + Math.sin(a) * 126).toFixed(1)}" r="${i >= 18 ? 4.5 : 3}" style="transition-delay:${(i * .07).toFixed(2)}s"/>`;
   }
   $('#orbit-ticks').innerHTML = s;
   const nf = new Intl.NumberFormat('en-GB');
