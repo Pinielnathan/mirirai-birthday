@@ -1299,5 +1299,12 @@ if ('IntersectionObserver' in window) {
 syncMusic();
 })();
 </script>
+<script>
+window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+// open the link once with #me on your own phone so your visits are left out of the counts
+try { if (location.hash === '#me') localStorage.setItem('owner', '1'); } catch (e) {}
+window.va('beforeSend', function (event) { try { return localStorage.getItem('owner') === '1' ? null : event; } catch (e) { return event; } });
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>
